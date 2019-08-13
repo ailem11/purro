@@ -13,6 +13,17 @@ router.get('/responses', (req,res,next)=>{
     })
 });
 
+router.get('/first-response', (req,res,next)=>{
+    Response.findOne(function(err,responses){
+        if(err){
+            res.json(err);
+        }
+        else{
+            res.json(response);
+        }
+    })
+});
+
 
 router.post('/response', (req,res,next)=>{
     let newSurveyResponse = new Response({
