@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Response } from '../models/response';
-import { DataService} from '../services/data.service';
+import { Response } from '../../models/response';
+import { DataService} from '../../services/data.service';
 
 @Component({
   selector: 'app-survey-response',
@@ -11,7 +11,7 @@ export class SurveyResponseComponent implements OnInit {
 
   surveyResponseList: Response[] = [];
   surveyResponse: Response = {FIRST_NAME:'', LAST_NAME:'', EMAIL:''};
-
+  //var responsecursor = 
 
   constructor( private dataService: DataService) {
    }
@@ -25,7 +25,7 @@ export class SurveyResponseComponent implements OnInit {
   };
 
   getResponse(){
-    this.dataService.getSurveyResponses()
+    this.dataService.getSurveyResponse()
     .subscribe(response=>{
       this.surveyResponse = response;
       console.log('data from dataService: ' + this.surveyResponse.FIRST_NAME);

@@ -1,0 +1,26 @@
+<div class="container">
+    <div class="section">
+        <div class="welcome-mssg has-text-centered">
+            <p class="title is-2">Total Responses</p>
+        </div>
+
+        <div class="columns is-multiline is-centered cards-container">
+            <div class="column">
+                <div class="message is-black">
+                    <table class="table" >
+                        <tr><td>FIRST NAME</td>
+                            <td>LAST NAME</td>
+                            <td>EMAIL</td>
+                        </tr>
+                        <tbody>                         
+                            <tr *ngFor="let response of surveyResponseList">
+                                <td>{{response.FIRST_NAME}}</td>
+                                <td>{{response.LAST_NAME}} </td>
+                                <td>{{response.EMAIL}} </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+ </div>

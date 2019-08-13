@@ -14,7 +14,7 @@ router.get('/responses', (req,res,next)=>{
 });
 
 router.get('/first-response', (req,res,next)=>{
-    Response.findOne(function(err,responses){
+    Response.findOne(function(err,response){
         if(err){
             res.json(err);
         }

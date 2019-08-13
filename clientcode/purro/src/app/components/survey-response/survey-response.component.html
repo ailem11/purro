@@ -1,0 +1,41 @@
+<div class="container">
+    <div class="section">
+        <div class="welcome-mssg-row has-text-centered">
+            <span class="prev-next-arrow fas fa-2x"  title="previous response">
+                <fa-icon icon="angle-double-left"></fa-icon>
+            </span>
+            <div class="welcome-mssg has-text-centered">
+                <p class="title is-2">Welcome Meera!</p>
+                <p class="subtitle is-4">Your career path results are below</p>
+            </div>
+            <span class="prev-next-arrow fas fa-2x" title="next response">
+                <fa-icon icon="angle-double-right"></fa-icon>
+            </span>
+        </div>
+
+        <div class="columns is-multiline is-centered cards-container">
+            <div class="column is-one-third">
+                <div class="message is-black">
+                    <div class="title">Skills</div>
+                    <table class="table" *ngFor="let skill of surveyResponse.SKILLS">
+                        <tbody>
+                            <tr><td>{{skill}}</td></tr>
+                            <tr><td>Willing to Improve </td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="column is-one-third">
+                <div class="message is-black">
+                    <div class="title">Values</div>
+                    <p>I value these values</p>
+                </div>
+            </div>
+            <div class="column is-one-third">
+                <div class="message is-black">
+                    <div class="title">Interests</div>
+                    <p>These are my interests</p>  
+                </div>
+            </div>
+        </div>
+</div>
