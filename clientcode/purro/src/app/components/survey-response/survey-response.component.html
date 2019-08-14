@@ -1,41 +1,105 @@
 <div class="container">
-    <div class="section">
+    <div class="section has-smaller-font">
         <div class="welcome-mssg-row has-text-centered">
-            <span class="prev-next-arrow fas fa-2x"  title="previous response">
+            <span class="prev-next-arrow fas fa-2x"  title="previous response" [class.disabled]="!hasPrev" (click)='goToPrevNextResponse("left")'>
                 <fa-icon icon="angle-double-left"></fa-icon>
             </span>
             <div class="welcome-mssg has-text-centered">
-                <p class="title is-2">Welcome Meera!</p>
+                <p class="title is-2">Welcome {{surveyResponse.FIRST_NAME}}!</p>
                 <p class="subtitle is-4">Your career path results are below</p>
             </div>
-            <span class="prev-next-arrow fas fa-2x" title="next response">
+            <span class="prev-next-arrow fas fa-2x" title="next response"  [class.disabled]="!hasNext" (click)='goToPrevNextResponse("right")'>
                 <fa-icon icon="angle-double-right"></fa-icon>
             </span>
         </div>
 
-        <div class="columns is-multiline is-centered cards-container">
-            <div class="column is-one-third">
-                <div class="message is-black">
-                    <div class="title">Skills</div>
-                    <table class="table" *ngFor="let skill of surveyResponse.SKILLS">
-                        <tbody>
-                            <tr><td>{{skill}}</td></tr>
-                            <tr><td>Willing to Improve </td></tr>
-                        </tbody>
-                    </table>
+        <div class="columns response-container is-multiline is-centered cards-container">
+            <div class="column response is-one-third">
+                <div class="card">
+                    <div class="card-content">
+                        <nav class="level">
+                            <div class="level-item has-text-centered">
+                                <div class="title">Skills</div>
+                            </div>
+                        </nav>
+                    
+                        <div class="content">
+                            <table class="table is-responsive is-bordered is-fullwidth is-hoverable">
+                                <tbody >
+                                    <tr *ngFor="let skill of surveyResponse.SKILLS"><td class="has-text-centered">{{skill}}</td></tr>
+                                </tbody>
+                            </table>
+                            <table class="table is-responsive is-bordered is-fullwidth is-hoverable">
+                                <tbody >
+                                    <tr *ngFor="let skill of surveyResponse.ASPIRATIONAL_HARD_SKILLS"><td class="has-text-centered">{{skill}}</td></tr>
+                                    <tr *ngFor="let skill of surveyResponse.ASPIRATIONAL_SOFT_SKILLS"><td class="has-text-centered">{{skill}}</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="card-footer column-card-footer">
+                        <a class="button is-rounded retake-btn">Retake Quiz</a>
+                    </div>
                 </div>
             </div>
-            <div class="column is-one-third">
-                <div class="message is-black">
-                    <div class="title">Values</div>
-                    <p>I value these values</p>
+
+            <div class="column response is-one-third">
+                <div class="card">
+                    <div class="card-content">
+                        <nav class="level">
+                            <div class="level-item has-text-centered">
+                                <div class="title">Values</div>
+                            </div>
+                        </nav>
+                        <div class="content">
+                            <p>I value a <span class="values">{{makeString(surveyResponse.IDEAL_COMPANY_CULTURE)}}</span> office environment</p>
+                            <p>I work best <span class="values">{{makeString(surveyResponse.IDEAL_WORK_STYLE)}}</span></p>
+                            <p>I thrive in a <span class="values">{{makeString(surveyResponse.IDEAL_WORK_ENV)}} </span>workspace</p>
+                            <p>It is most important to me that a company believes in my <span class="values">{{makeString(surveyResponse.IDEAL_COMPANY_VALUES)}}</span></p>            
+                        </div>
+                    </div>
+                    <div class="card-footer column-card-footer">
+                        <a class="button is-rounded retake-btn">Retake Quiz</a>
+                    </div>
                 </div>
             </div>
-            <div class="column is-one-third">
-                <div class="message is-black">
-                    <div class="title">Interests</div>
-                    <p>These are my interests</p>  
+
+            <div class="column response is-one-third">
+                <div class="card">
+                    <div class="card-content">
+                        <nav class="level">
+                            <div class="level-item has-text-centered">
+                                <div class="title">Interests</div>
+                            </div>
+                        </nav>
+                        <div class="content">
+                            <table class="table fitted-table is-responsive is-fullwidth is-hoverable" >
+                                <tbody>
+                                    <tr>
+                                        <th>Location</th>
+                                        <td *ngFor="let location of surveyResponse.IDEAL_WORK_LOCATION">{{location}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Industry</th>
+                                        <td  *ngFor="let industry of surveyResponse.IDEAL_INDUSTRIES">{{industry}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Function</th>
+                                        <td  *ngFor="let function of surveyResponse.IDEAL_JOB_FUNCTIONS">{{function}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Stage</th>
+                                        <td  *ngFor="let stage of surveyResponse.IDEAL_COMPANY_STAGE">{{stage}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="card-footer column-card-footer">
+                        <a class="button is-rounded retake-btn">Retake Quiz</a>
+                    </div>
                 </div>
             </div>
         </div>
+    </div>
 </div>

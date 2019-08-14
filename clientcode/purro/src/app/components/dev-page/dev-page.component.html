@@ -1,26 +1,30 @@
 <div class="container">
     <div class="section">
-        <div class="welcome-mssg has-text-centered">
-            <p class="title is-2">Total Responses</p>
-        </div>
-
-        <div class="columns is-multiline is-centered cards-container">
-            <div class="column">
-                <div class="message is-black">
-                    <table class="table" >
-                        <tr><td>FIRST NAME</td>
-                            <td>LAST NAME</td>
-                            <td>EMAIL</td>
-                        </tr>
-                        <tbody>                         
-                            <tr *ngFor="let response of surveyResponseList">
-                                <td>{{response.FIRST_NAME}}</td>
-                                <td>{{response.LAST_NAME}} </td>
-                                <td>{{response.EMAIL}} </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
+        <nav class="level">
+            <div class="level-item has-text-centered">
+                <div class="title">Total Responses</div>
             </div>
-        </div>
- </div>
+        </nav>
+        
+        <nav class="level">
+            <div class="level-item has-text-centered">
+                <table class="table is-bordered" >
+                    <thead>
+                        <tr>
+                            <th>FIRST NAME</th>
+                            <th>LAST NAME</th>
+                            <th>EMAIL</th>
+                        </tr>
+                    </thead>
+                    <tbody>                         
+                        <tr *ngFor="let response of surveyResponseList">
+                            <td>{{response.FIRST_NAME}}</td>
+                            <td>{{response.LAST_NAME}} </td>
+                            <td>{{response.EMAIL}} </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </nav>
+    </div>
+</div>

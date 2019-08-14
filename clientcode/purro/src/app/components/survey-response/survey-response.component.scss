@@ -5,9 +5,59 @@
     margin-bottom: 0.75em;
 }
 .prev-next-arrow{
-
+    cursor: pointer;
 }
 
 .fas:hover { 
-    color: lightblue;
+    color: #8ed5f1;
+}
+
+.has-smaller-font{
+    font-size:90%;
+}
+.disabled {
+    pointer-events: none;
+    color: #b7b7b7;
+}
+
+.response-container{
+    display: flex;
+}
+
+.response{
+    flex: 1;
+}
+.values{
+    font-weight: bold;
+    background-color: #d0f2f2;
+    border-radius: 290486px;
+    padding-left: 1em;
+    padding-right: 1em;
+}
+
+.fitted-table{
+    table-layout: fixed;
+    width: 100%;
+    word-wrap: break-word;
+    padding: .5em .55em;
+}
+
+.column
+    .card{
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+}
+
+.retake-btn{
+    background-color: #f28705;
+    border-color: transparent;
+    color: white;
+    font-weight: 500;
+}
+.column-card-footer {
+    margin-top: auto;
+    border-top: none;
+    justify-content: center;
+    margin-bottom: .5em;
 }
