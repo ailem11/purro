@@ -8,22 +8,27 @@
         
         <nav class="level">
             <div class="level-item has-text-centered">
-                <table class="table is-bordered" >
-                    <thead>
-                        <tr>
-                            <th>FIRST NAME</th>
-                            <th>LAST NAME</th>
-                            <th>EMAIL</th>
-                        </tr>
-                    </thead>
-                    <tbody>                         
-                        <tr *ngFor="let response of surveyResponseList">
-                            <td>{{response.FIRST_NAME}}</td>
-                            <td>{{response.LAST_NAME}} </td>
-                            <td>{{response.EMAIL}} </td>
-                        </tr>
-                    </tbody>
-                </table>
+                <div class="table-container">
+                    <table class="table is-bordered" >
+                        <thead>
+                            <tr>
+                                <!--<th *ngFor="let key of getKeys(surveyResponseList[0])">{{ key }}</th>-->
+                                <th>FIRST NAME</th>
+                                <th>LAST NAME</th>
+                                <th>EMAIL</th>
+                                <th>SKILL</th>
+                            </tr>
+                        </thead>
+                        <tbody>                         
+                            <tr *ngFor="let response of surveyResponseList">
+                                <td>{{response.FIRST_NAME}}</td>
+                                <td>{{response.LAST_NAME}} </td>
+                                <td>{{response.EMAIL}} </td>
+                                <td>{{response.SKILLS}} </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </nav>
     </div>

@@ -7,7 +7,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
+  hasClicked: boolean = false;
+
   constructor() { }
+
+
+  toggleActiveState(){
+    this.hasClicked=!this.hasClicked;
+  }
 
   ngOnInit() {
   }

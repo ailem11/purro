@@ -1,21 +1,26 @@
-<nav class="navbar is-white">
-
+<nav class="navbar is-white" role="navigation" aria-label="main navigation">
     <!-- logo -->
-    <div class="navbar-brand">
-      <a class="navbar-item">
-        <img src="assets/img/purro-logo.png">
-      </a>
-    </div>
+  <div class="navbar-brand" >
+    <a class="navbar-item">
+      <img src="assets/img/purro-logo.png">
+    </a>
+    
+    <a role="button" id="nav-toggle-state" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarMainMenu" 
+    (click)="toggleActiveState()" [ngClass]="{'is-active':hasClicked, 'active':hasClicked}">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
   
-    <!-- menu -->
-    <div class="navbar-menu">
-      <div class="navbar-end">
-        <a class="navbar-item" routerLink="">Home</a>
-        <a class="navbar-item">Profile</a>
-        <a class="navbar-item">Log in</a>
-        <a class="navbar-item" routerLink="dev-page">Dev Page</a>
-      </div>
+<!--menu-->
+  <div id="navbarMainMenu" class="navbar-menu" [ngClass]="{'is-active':hasClicked, 'active':hasClicked}"> 
+    <div class="navbar-end">
+      <a class="navbar-item" routerLink="">Home</a>
+      <a class="navbar-item">Profile</a>
+      <a class="navbar-item">Log in</a>
+      <a class="navbar-item" routerLink="dev-page">Dev Page</a>
     </div>
-  
-  </nav>
-  <hr/>
+  </div>
+</nav>
+<hr/>

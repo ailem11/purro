@@ -24,6 +24,18 @@ export class DevPageComponent implements OnInit {
     })
   };
 
+  getKeys(response) {
+    return (response && response.length > 0) ?  Object.keys(response[0]) : [];
+  }
+
+  
+  makeString(arr) {
+    if (arr.length === 1) return arr[0];
+    const firsts = arr.slice(0, arr.length - 1);
+    const last = arr[arr.length - 1];
+    return firsts.join(', ') + ' and ' + last;
+  }
+
 
   ngOnInit() {
     this.getResponses();
