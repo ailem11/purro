@@ -10,20 +10,30 @@ export class DataService {
   constructor( private http: Http) { }
 
 getSurveyResponse(){
-  return this.http.get('http://localhost:3000/api/first-response')
+  return this.http.get('api/first-response')
   .pipe(map(res => res.json()));
 };  
 
 getSurveyResponses(){
-  return this.http.get('http://localhost:3000/api/responses')
+  return this.http.get('api/responses')
   .pipe(map(res => res.json()));
 };
 
 addSurveyResponses(newResponse){
   let headers = new Headers();
   headers.append('content-Type', 'application/json');
-  return this.http.post('http://localhost:3000/api/response', newResponse, {headers: headers})
+  return this.http.post('api/response', newResponse, {headers: headers})
   .pipe(map(res => res.json()));
 };
 
+getIndustries(){
+  return this.http.get('api/industries')
+  .pipe(map(res => res.json()));
+};
+
+
+getCompanies(){
+  return this.http.get('api/companies')
+  .pipe(map(res => res.json()));
+};
 }

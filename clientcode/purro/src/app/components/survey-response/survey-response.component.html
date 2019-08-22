@@ -51,11 +51,11 @@
                                 <div class="title">Values</div>
                             </div>
                         </nav>
-                        <div class="content">
-                            <p>I value a <span class="values">{{makeString(surveyResponse.IDEAL_COMPANY_CULTURE)}}</span> office environment</p>
-                            <p>I work best <span class="values">{{makeString(surveyResponse.IDEAL_WORK_STYLE)}}</span></p>
-                            <p>I thrive in a <span class="values">{{makeString(surveyResponse.IDEAL_WORK_ENV)}} </span>workspace</p>
-                            <p>It is most important to me that a company believes in my <span class="values">{{makeString(surveyResponse.IDEAL_COMPANY_VALUES)}}</span></p>            
+                        <div class="content is-responsive">
+                            <p>I value a <span class="values">{{utilService.makeString(surveyResponse.IDEAL_COMPANY_CULTURE)}}</span> office environment</p>
+                            <p>I work best <span class="values">{{utilService.makeString(surveyResponse.IDEAL_WORK_STYLE)}}</span></p>
+                            <p>I thrive in a <span class="values">{{utilService.makeString(surveyResponse.IDEAL_WORK_ENV)}} </span>workspace</p>
+                            <p>It is most important to me that a company believes in my <span class="values">{{utilService.makeString(surveyResponse.IDEAL_COMPANY_VALUES)}}</span></p>            
                         </div>
                     </div>
                     <div class="card-footer column-card-footer">
@@ -72,7 +72,7 @@
                                 <div class="title">Interests</div>
                             </div>
                         </nav>
-                        <div class="content">
+                        <div class="content is-responsive">
                             <table class="table fitted-table is-responsive is-fullwidth is-hoverable" >
                                 <tbody>
                                     <tr>

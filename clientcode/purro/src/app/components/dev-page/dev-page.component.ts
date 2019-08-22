@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Response } from '../../models/response';
 import { DataService} from '../../services/data.service';
+import { UtilService} from '../../services/util.service';
 
 @Component({
   selector: 'app-dev-page',
@@ -10,35 +11,51 @@ import { DataService} from '../../services/data.service';
 export class DevPageComponent implements OnInit {
 
   surveyResponseList: Response[] = [];
- // surveyResponse: Response = {FIRST_NAME:'', LAST_NAME:'', EMAIL:''};
-  //var responsecursor = 
+  priorityResponseFields = ["FIRST_NAME", "LAST_NAME","EMAIL", "_id"];
+  responseFields: String[];
+  
+  industriesList: Response[] = [];
+  priorityIndustryFields = [];
+  industryFields: String[]; 
 
-  constructor( private dataService: DataService) {
-   }
+
+  companiesList: Response[] = [];
+  priorityCompanyFields = [];
+  companyFields: String[]; 
+
+  constructor( private dataService: DataService, private utilService: UtilService) {}
 
   getResponses(){
     this.dataService.getSurveyResponses()
     .subscribe(responses=>{
       this.surveyResponseList = responses;
       console.log('data from dataService: ' + this.surveyResponseList[0].FIRST_NAME);
+      this.responseFields = this.utilService.getFieldNames(this.surveyResponseList[0], this.priorityResponseFields);
+    })
+  };
+  
+  getIndustries(){
+    this.dataService.getIndustries()
+    .subscribe(industries=>{
+      this.industriesList = industries;
+      console.log('data from dataService: ' + this.industriesList[0]);
+     // this.industryFields = this.utilService.getFieldNames(this.industriesList[0], this.priorityIndustryFields);
     })
   };
 
-  getKeys(response) {
-    return (response && response.length > 0) ?  Object.keys(response[0]) : [];
-  }
-
-  
-  makeString(arr) {
-    if (arr.length === 1) return arr[0];
-    const firsts = arr.slice(0, arr.length - 1);
-    const last = arr[arr.length - 1];
-    return firsts.join(', ') + ' and ' + last;
-  }
-
+  getCompanies(){
+    this.dataService.getCompanies()
+    .subscribe(industries=>{
+      this.companiesList = industries;
+      console.log('data from dataService: ' + this.companiesList[0]);
+     // this.companyFields = this.utilService.getFieldNames(this.companiesList[0], this.priorityCompanyFields);
+    })
+  };
 
   ngOnInit() {
     this.getResponses();
+    this.getIndustries();
+    this.getCompanies();
   }
 
 }

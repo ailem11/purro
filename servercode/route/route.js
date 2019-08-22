@@ -24,6 +24,27 @@ router.get('/first-response', (req,res,next)=>{
     })
 });
 
+router.get('/companies', (req,res,next)=>{
+    Response.find(function(err,companies){
+        if(err){
+            res.json(err);
+        }
+        else{
+            res.json(companies);
+        }
+    })
+});
+
+router.get('/industries', (req,res,next)=>{
+    Response.find(function(err,industries){
+        if(err){
+            res.json(err);
+        }
+        else{
+            res.json(industries);
+        }
+    })
+});
 
 router.post('/response', (req,res,next)=>{
     let newSurveyResponse = new Response({

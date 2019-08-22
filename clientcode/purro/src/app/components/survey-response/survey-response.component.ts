@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Response } from '../../models/response';
 import { DataService} from '../../services/data.service';
+import { UtilService} from '../../services/util.service';
 
 @Component({
   selector: 'app-survey-response',
@@ -15,7 +16,7 @@ export class SurveyResponseComponent implements OnInit {
   hasPrev: boolean = false; hasNext: boolean = false;
   hasResponseinDB: boolean = false;
 
-  constructor( private dataService: DataService) {
+  constructor( private dataService: DataService, private utilService: UtilService) {
    }
 
   getResponses(){
@@ -66,14 +67,6 @@ export class SurveyResponseComponent implements OnInit {
       }  
     }    
   }
-
-  makeString(arr) {
-    if (arr.length === 1) return arr[0];
-    const firsts = arr.slice(0, arr.length - 1);
-    const last = arr[arr.length - 1];
-    return firsts.join(', ') + ' and ' + last;
-  }
-  
 
   ngOnInit() {
     this.getResponses();
