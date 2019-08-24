@@ -48,11 +48,18 @@ only screen and (max-width: 769px){
     }
 }
 
+.has-smaller-font{
+    font-size:70%;
+}
+
 .fitted-width{
     max-width: 1344px;
 }
 .fitted-height{
     max-height: 609px;
+}
+.full-width{
+    width: max-content;
 }
 .scrollable-height-table{
     max-height: 100%;

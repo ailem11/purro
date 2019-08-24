@@ -8,7 +8,7 @@
                 <p class="title is-2">Welcome {{surveyResponse.FIRST_NAME}}!</p>
                 <p class="subtitle is-4">Your career path results are below</p>
             </div>
-            <span class="prev-next-arrow fas fa-2x" title="next response"  [class.disabled]="!hasNext" (click)='goToPrevNextResponse("right")'>
+            <span class="prev-next-arrow fas fa-2x" title="next response" [class.disabled]="!hasNext" (click)='goToPrevNextResponse("right")'>
                 <fa-icon icon="angle-double-right"></fa-icon>
             </span>
         </div>
@@ -52,10 +52,10 @@
                             </div>
                         </nav>
                         <div class="content is-responsive">
-                            <p>I value a <span class="values">{{utilService.makeString(surveyResponse.IDEAL_COMPANY_CULTURE)}}</span> office environment</p>
-                            <p>I work best <span class="values">{{utilService.makeString(surveyResponse.IDEAL_WORK_STYLE)}}</span></p>
-                            <p>I thrive in a <span class="values">{{utilService.makeString(surveyResponse.IDEAL_WORK_ENV)}} </span>workspace</p>
-                            <p>It is most important to me that a company believes in my <span class="values">{{utilService.makeString(surveyResponse.IDEAL_COMPANY_VALUES)}}</span></p>            
+                            <p>I value a <span class="values">{{utilService.displayStringArr(surveyResponse.IDEAL_COMPANY_CULTURE)}}</span> office environment</p>
+                            <p>I work best <span class="values">{{utilService.displayStringArr(surveyResponse.IDEAL_WORK_STYLE)}}</span></p>
+                            <p>I thrive in a <span class="values">{{utilService.displayStringArr(surveyResponse.IDEAL_WORK_ENV)}} </span>workspace</p>
+                            <p>It is most important to me that a company believes in my <span class="values">{{utilService.displayStringArr(surveyResponse.IDEAL_COMPANY_VALUES)}}</span></p>            
                         </div>
                     </div>
                     <div class="card-footer column-card-footer">
@@ -77,19 +77,22 @@
                                 <tbody>
                                     <tr>
                                         <th>Location</th>
-                                        <td *ngFor="let location of surveyResponse.IDEAL_WORK_LOCATION">{{location}}</td>
+                                        <td>{{surveyResponse.IDEAL_WORK_LOCATION}}</td>
+                                      <!--  <td *ngFor="let location of surveyResponse.IDEAL_WORK_LOCATION">{{location}}</td>-->
                                     </tr>
                                     <tr>
-                                        <th>Industry</th>
-                                        <td  *ngFor="let industry of surveyResponse.IDEAL_INDUSTRIES">{{industry}}</td>
+                                        <th>Least preferred Industry</th>
+                                        <td>{{surveyResponse.OPPOSED_INDUSTRIES}}</td>
+                                       <!-- <td *ngFor="let industry of surveyResponse.OPPOSED_INDUSTRIES">{{industry}}</td>-->
                                     </tr>
                                     <tr>
                                         <th>Function</th>
-                                        <td  *ngFor="let function of surveyResponse.IDEAL_JOB_FUNCTIONS">{{function}}</td>
+                                        <td>{{surveyResponse.IDEAL_JOB_FUNCTIONS}}</td>
+                                        <!--<td  *ngFor="let function of surveyResponse.IDEAL_WORK_FUNCTIONS">{{surveyResponse.IDEAL_WORK_FUNCTIONS}}</td>-->
                                     </tr>
                                     <tr>
-                                        <th>Stage</th>
-                                        <td  *ngFor="let stage of surveyResponse.IDEAL_COMPANY_STAGE">{{stage}}</td>
+                                        <th>Company Size</th>
+                                        <td>{{surveyResponse.IDEAL_COMPANY_SIZE}}</td>
                                     </tr>
                                 </tbody>
                             </table>

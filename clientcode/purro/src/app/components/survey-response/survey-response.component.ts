@@ -16,30 +16,22 @@ export class SurveyResponseComponent implements OnInit {
   hasPrev: boolean = false; hasNext: boolean = false;
   hasResponseinDB: boolean = false;
 
-  constructor( private dataService: DataService, private utilService: UtilService) {
-   }
+  constructor( private dataService: DataService, private utilService: UtilService) {}
 
   getResponses(){
     this.dataService.getSurveyResponses()
     .subscribe(responses=>{
-      this.surveyResponseList = responses;
+      this.surveyResponseList = this.utilService.transformData(responses, "IDEAL_COMPANY_SIZE");
+      //this.surveyResponseList = this.transformData(responses, "IDEAL_COMPANY_SIZE");
       this.initCursor();
       console.log('data from dataService: ' + this.surveyResponseList[0].FIRST_NAME);
     })
   };
-/*
-  getResponse(){
-    this.dataService.getSurveyResponse()
-    .subscribe(response=>{
-      this.surveyResponse = response;
-      console.log('data from dataService: ' + this.surveyResponse.FIRST_NAME);
-    })
-  };*/
 
   initCursor(){
     if(this.surveyResponseList && this.surveyResponseList.length){
       this.responseIndex = 0;
-      this.surveyResponse = this.surveyResponseList[this.responseIndex];   
+      this.surveyResponse =this.surveyResponseList[this.responseIndex]
       this.responseListLength = this.surveyResponseList.length;
       this.hasResponseinDB = true;
       this.setCursor();    
@@ -55,22 +47,18 @@ export class SurveyResponseComponent implements OnInit {
     if(direction == "right"){
       if(this.hasNext){
         this.responseIndex = this.responseIndex + 1;
-        this.surveyResponse = this.surveyResponseList[this.responseIndex];
-        this.setCursor();        
       }  
     }
     if(direction == "left"){
       if(this.hasPrev){
-        this.responseIndex = this.responseIndex - 1;
-        this.surveyResponse = this.surveyResponseList[this.responseIndex]; 
-        this.setCursor();       
+        this.responseIndex = this.responseIndex - 1;    
       }  
-    }    
+    }
+    this.surveyResponse = this.surveyResponseList[this.responseIndex];
+    this.setCursor();         
   }
 
   ngOnInit() {
     this.getResponses();
-   
   }
-
 }

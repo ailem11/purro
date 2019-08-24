@@ -168,6 +168,6 @@ const surveyResponseSchema = mongoose.Schema({
         required: false
     },
 
-});
+}, {strict: false});
 
-const Response = module.exports = mongoose.model('survey_responses', surveyResponseSchema);
+const Response = module.exports = mongoose.model('user_survey_responses', surveyResponseSchema);

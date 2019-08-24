@@ -1,8 +1,12 @@
 var express = require('express');
 var router = express.Router();
-const Response = require('../model/surveyResponse');
+const Response = require('../model/user-survey-response');
+const UserSkill = require('../model/user-skill');
+const UserDemoInfo = require('../model/user-demo-info');
+const UserInterest = require('../model/user-interest');
+const UserValue = require('../model/user-value');
 
-router.get('/responses', (req,res,next)=>{
+router.get('/user-survey-responses', (req,res,next)=>{
     Response.find(function(err,responses){
         if(err){
             res.json(err);
@@ -13,18 +17,48 @@ router.get('/responses', (req,res,next)=>{
     })
 });
 
-router.get('/first-response', (req,res,next)=>{
-    Response.findOne(function(err,response){
+router.get('/user-demo-info', (req,res,next)=>{
+    UserDemoInfo.find(function(err,demographics){
         if(err){
             res.json(err);
         }
         else{
-            res.json(response);
+            res.json(demographics);
         }
     })
 });
 
-router.get('/companies', (req,res,next)=>{
+router.get('/user-interests', (req,res,next)=>{
+    UserInterest.find(function(err,interests){
+        if(err){
+            res.json(err);
+        }
+        else{
+            res.json(interests);
+        }
+    })
+});
+router.get('/user-skills', (req,res,next)=>{
+    UserSkill.find(function(err,skills){
+        if(err){
+            res.json(err);
+        }
+        else{
+            res.json(skills);
+        }
+    })
+});
+router.get('/user-values', (req,res,next)=>{
+    UserValue.find(function(err,values){
+        if(err){
+            res.json(err);
+        }
+        else{
+            res.json(values);
+        }
+    })
+});
+router.get('/ref-companies', (req,res,next)=>{
     Response.find(function(err,companies){
         if(err){
             res.json(err);
@@ -35,7 +69,18 @@ router.get('/companies', (req,res,next)=>{
     })
 });
 
-router.get('/industries', (req,res,next)=>{
+router.get('/ref-experiences', (req,res,next)=>{
+    Response.find(function(err,experiences){
+        if(err){
+            res.json(err);
+        }
+        else{
+            res.json(experiences);
+        }
+    })
+});
+
+router.get('/ref-industries', (req,res,next)=>{
     Response.find(function(err,industries){
         if(err){
             res.json(err);
@@ -45,6 +90,50 @@ router.get('/industries', (req,res,next)=>{
         }
     })
 });
+
+router.get('/ref-locations', (req,res,next)=>{
+    Response.find(function(err,locations){
+        if(err){
+            res.json(err);
+        }
+        else{
+            res.json(locations);
+        }
+    })
+});
+
+router.get('/ref-roles', (req,res,next)=>{
+    Response.find(function(err,roles){
+        if(err){
+            res.json(err);
+        }
+        else{
+            res.json(roles);
+        }
+    })
+});
+router.get('/ref-skills', (req,res,next)=>{
+    Response.find(function(err,skills){
+        if(err){
+            res.json(err);
+        }
+        else{
+            res.json(skills);
+        }
+    })
+});
+router.get('/ref-tools', (req,res,next)=>{
+    Response.find(function(err,tools){
+        if(err){
+            res.json(err);
+        }
+        else{
+            res.json(tools);
+        }
+    })
+});
+
+
 
 router.post('/response', (req,res,next)=>{
     let newSurveyResponse = new Response({

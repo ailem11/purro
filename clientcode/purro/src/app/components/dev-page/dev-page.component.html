@@ -1,11 +1,53 @@
 <div class="container">
-    <div class="section fitted-width">
+    <div class="section has-smaller-font fitted-width">
+
+        <div class=table-selection>
+            <label class="radio">
+                <input type="radio" class="is-checkradio" [(ngModel)]="tableViewOption" (click)="onTableViewSelection('User')" value="User" name="tableView" checked>
+                User Tables
+            </label>
+            <label class="radio">
+                <input type="radio" class="is-checkradio" [(ngModel)]="tableViewOption" (click)="onTableViewSelection('Ref')" value="Ref" name="tableView">
+                Reference Tables
+            </label>
+            <label class="radio">
+                <input type="radio" class="is-checkradio" [(ngModel)]="tableViewOption" (click)="onTableViewSelection('All')" value="All" name="tableView">
+                All Tables
+            </label>
+        </div>
+
         <nav class="level">
             <div class="level-item has-text-centered">
-                <div class="title">Total Responses</div>
+                <div *ngIf="tableViewOption=='All'" class="title">All Tables</div>
+                <div *ngIf="tableViewOption=='User'" class="title">User Tables</div>
+                <div *ngIf="tableViewOption=='Ref'" class="title">Reference Tables</div>
             </div>
         </nav>
         
+        <div class = "table-view">
+            <div class="scrollable-width-table">
+                <table class="table is-responsive" *ngFor="let selectTable of tableObjectArray">
+                    <thead>
+                            <h2 class="subtitle full-width">{{selectTable.name}}</h2>
+                        <tr>
+                            <th *ngFor="let fieldName of selectTable.fields">{{ fieldName }}</th>
+                        </tr>
+                    </thead>
+                    <tbody>                   
+                        <tr *ngFor="let dataEntry of selectTable.data">
+                            <td *ngFor= "let name of selectTable.fields">{{dataEntry[name]}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+
+
+<!--
+
+
+
         <div class="scrollable-width-table">
             <table class="table is-responsive" >
                 <thead>
@@ -23,7 +65,7 @@
 
         <nav class="level">
             <div class="level-item has-text-centered">
-                <div class="title">Industries</div>
+                <div class="title">Reference Industries</div>
             </div>
         </nav>
         <div class="scrollable-width-table">
@@ -43,7 +85,7 @@
 
         <nav class="level">
             <div class="level-item has-text-centered">
-                <div class="title">Companies</div>
+                <div class="title">Reference Companies</div>
             </div>
         </nav>
         <div class="scrollable-width-table">
@@ -60,5 +102,43 @@
                 </tbody>
             </table>
         </div>
+        <nav class="level">
+            <div class="level-item has-text-centered">
+                <div class="title">User Demographics</div>
+            </div>
+        </nav>
+        <div class="scrollable-width-table">
+            <table class="table is-responsive" >
+                <thead>
+                    <tr>
+                        <th *ngFor="let fieldName of companiesFields">{{ fieldName }}</th>
+                    </tr>
+                </thead>
+                <tbody>                   
+                    <tr *ngFor="let company of companiesList">
+                        <td *ngFor= "let name of companiesFields">{{utilService.makeString(company[name])}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <nav class="level">
+                <div class="level-item has-text-centered">
+                    <div class="title">Reference Companies</div>
+                </div>
+            </nav>
+            <div class="scrollable-width-table">
+                <table class="table is-responsive" >
+                    <thead>
+                        <tr>
+                            <th *ngFor="let fieldName of companiesFields">{{ fieldName }}</th>
+                        </tr>
+                    </thead>
+                    <tbody>                   
+                        <tr *ngFor="let company of companiesList">
+                            <td *ngFor= "let name of companiesFields">{{utilService.makeString(company[name])}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>-->
     </div>
 </div>
